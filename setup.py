@@ -52,6 +52,7 @@ setup_args = dict(
     include_package_data=True,
     install_requires=[
         'ipywidgets>=7.6.0',
+        'seekpath>=2.0.1',
     ],
     packages=find_packages(),
     zip_safe=False,
