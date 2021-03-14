@@ -32,6 +32,7 @@
   "devDependencies": {
     "@jupyterlab/builder": "^3.0.0",
     "webpack": "^5",
+    "three": "0.126.1",
     "rimraf": "^2.6.1"
   },
   "dependencies": {
