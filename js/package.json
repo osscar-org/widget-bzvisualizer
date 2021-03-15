@@ -30,9 +30,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "@jupyterlab/builder": "^3.0.0",
+    "@jupyterlab/builder": "^3.0.5",
     "webpack": "^5",
-    "three": "0.126.1",
+    "three": "0.124.0",
+    "jquery": "3.6.0",
     "rimraf": "^2.6.1"
   },
   "dependencies": {

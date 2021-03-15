@@ -30,6 +30,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 */
+var THREE = require('three/build/three.module');
+
+var OrbitControls = require('./OrbitControls').OrbitControls;
+
 
 var prettifyLabel = function (label, forSVG) {
 
@@ -323,7 +327,7 @@ var BZVisualizer = function (showAxes, showBVectors, showPathpoints, useSVGRende
         // var win = doc.defaultView || doc.parentWindow;
         // win.addEventListener("resize", resizeRenderer);
 
-        controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls = new OrbitControls(camera, renderer.domElement);
         controls.addEventListener('change', render); // add this only if there is no animation loop (requestAnimationFrame)
         // needed because we want to redraw only on change
         controls.enableDamping = true;
@@ -491,7 +495,9 @@ var BZVisualizer = function (showAxes, showBVectors, showPathpoints, useSVGRende
             });
 
         // Load BZ
+        console.log("#######################Test 1");
         var brillouinzone = new THREE.Geometry();
+        console.log("#######################Test 2");
         data['triangles_vertices'].forEach(function (vertex) {
             brillouinzone.vertices.push(
                 new THREE.Vector3(vertex[0], vertex[1], vertex[2]));
@@ -718,4 +724,8 @@ var BZVisualizer = function (showAxes, showBVectors, showPathpoints, useSVGRende
             });
         }
     }
+}
+
+module.exports = {
+    BZVisualizer: BZVisualizer,
 }
