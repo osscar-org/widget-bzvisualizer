@@ -45,13 +45,11 @@ class BZVisualizer(widgets.DOMWidget):
             cell = cell.tolist()
         super().__init__(cell = cell)
 
-        hpkot = seekpath.hpkot
-
         system = (np.array(cell), np.array([[0., 0., 0.]]), np.array([1]))
-        res = hpkot.get_path(system, with_time_reversal=False)
+        res = seekpath.getpaths.get_path(system, with_time_reversal=False)
 
         real_lattice = res["primitive_lattice"]
-        rec_lattice = np.array(hpkot.tools.get_reciprocal_cell_rows(real_lattice))
+        rec_lattice = np.array(seekpath.hpkot.tools.get_reciprocal_cell_rows(real_lattice))
         b1, b2, b3 = rec_lattice
 
         faces_data = get_BZ(b1=b1, b2=b2, b3=b3)
