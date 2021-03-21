@@ -34,18 +34,27 @@ class BZVisualizer(widgets.DOMWidget):
     # It is synced back to Python from the frontend *any* time the model is touched.
     value = Unicode('Hello World!').tag(sync=True)
 
-    # The cell parameters
+    # The cell parameters, position and atomic numbers
     cell = List().tag(sync=True)
+    positions = List().tag(sync=True)
+    numbers = List().tag(sync=True)
 
     # The jsondata for the Brillouin zone
     jsondata = Dict().tag(sync=True)
 
-    def __init__(self, cell):
+    def __init__(self, cell, positions, numbers):
         if type(cell) == np.ndarray:
             cell = cell.tolist()
-        super().__init__(cell = cell)
+        
+        if type(positions) == np.ndarray:
+            positions = positions.tolist()
 
-        system = (np.array(cell), np.array([[0., 0., 0.]]), np.array([1]))
+        if type(numbers) == np.ndarray:
+            numbers = numbers.tolist()
+
+        super().__init__(cell = cell, positions=positions, numbers=numbers)
+
+        system = (np.array(cell), np.array(positions), np.array(numbers))
         res = seekpath.getpaths.get_path(system, with_time_reversal=False)
 
         real_lattice = res["primitive_lattice"]
