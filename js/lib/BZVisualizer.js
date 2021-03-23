@@ -495,9 +495,7 @@ var BZVisualizer = function (showAxes, showBVectors, showPathpoints, useSVGRende
             });
 
         // Load BZ
-        console.log("#######################Test 1");
         var brillouinzone = new THREE.Geometry();
-        console.log("#######################Test 2");
         data['triangles_vertices'].forEach(function (vertex) {
             brillouinzone.vertices.push(
                 new THREE.Vector3(vertex[0], vertex[1], vertex[2]));
@@ -538,7 +536,7 @@ var BZVisualizer = function (showAxes, showBVectors, showPathpoints, useSVGRende
             kpoints_abs = jsondata['explicit_kpoints_abs'];
             for (var idx in kpoints_abs) {
                 pos = kpoints_abs[idx];
-                radius = 0.005 * max_b_length;
+                radius = 0.01 * max_b_length;
 
                 var sphere_geometry = new THREE.SphereGeometry(
                     radius, 16, 16);
@@ -547,6 +545,7 @@ var BZVisualizer = function (showAxes, showBVectors, showPathpoints, useSVGRende
                 sphere.translateX(pos[0]);
                 sphere.translateY(pos[1]);
                 sphere.translateZ(pos[2]);
+                sphere.name = "kpts";
                 scene.add(sphere);
             }
         }
@@ -591,9 +590,36 @@ var BZVisualizer = function (showAxes, showBVectors, showPathpoints, useSVGRende
                 bz_material.opacity = 0.0;
                 bz_material.needsUpdate = true;
             }
+
+            render();
         }
 
         canvas3d.addEventListener('dblclick', toggle_visiblity);
+
+        this.update_kpts = function (kpoints_abs) {
+            var kpt = scene.getObjectByName('kpts');
+            while (kpt) {
+                kpt = scene.getObjectByName('kpts');
+                scene.remove(kpt);
+            };
+
+            for (var idx in kpoints_abs) {
+                pos = kpoints_abs[idx];
+                radius = 0.01 * max_b_length;
+
+                var sphere_geometry = new THREE.SphereGeometry(
+                    radius, 16, 16);
+                var sphere = new THREE.Mesh(
+                    sphere_geometry, pointpath_material);
+                sphere.translateX(pos[0]);
+                sphere.translateY(pos[1]);
+                sphere.translateZ(pos[2]);
+                sphere.name = "kpts";
+                scene.add(sphere);
+            };
+
+            render();
+        }
 
         var dbltapTimeout;
         var shortTap = false;

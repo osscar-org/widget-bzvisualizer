@@ -38,6 +38,7 @@ class BZVisualizer(widgets.DOMWidget):
     cell = List().tag(sync=True)
     positions = List().tag(sync=True)
     numbers = List().tag(sync=True)
+    kpts = List().tag(sync=True)
 
     # The jsondata for the Brillouin zone
     jsondata = Dict().tag(sync=True)
@@ -99,3 +100,4 @@ class BZVisualizer(widgets.DOMWidget):
             raise AssertionError("Got different reciprocal cells...")
 
         self.jsondata = response
+        self.kpts = self.jsondata['explicit_kpoints_abs']

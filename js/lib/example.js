@@ -47,11 +47,9 @@ var BrillouinZoneView = widgets.DOMWidgetView.extend({
 
     // Defines how the widget gets rendered into the DOM
     render: function () {
-        this.value_changed();
-
         // Observe changes in the value traitlet in Python, and define
         // a custom callback.
-        this.model.on('change:value', this.value_changed, this);
+        this.model.on('change:kpts', this.kpts_changed, this);
 
         this.el.innerHTML = '<div class="BZ-widget" id="' + this.canvasID + '"></div>'
             + '<div id="' + this.infoID + '"></div>';
@@ -64,8 +62,10 @@ var BrillouinZoneView = widgets.DOMWidgetView.extend({
         });
     },
 
-    value_changed: function () {
-        this.el.textContent = this.model.get('value');
+    kpts_changed: function () {
+        console.log("This function has been triggled here***********");
+        const kpts = this.model.get('kpts');
+        this.BZVisualizer.update_kpts(kpts);
     }
 });
 
