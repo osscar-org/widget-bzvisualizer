@@ -582,7 +582,7 @@ var BZVisualizer = function (showAxes, showBVectors, showPathpoints, useSVGRende
 
         // canvas3d.addEventListener('dblclick', bz_switch_enable);
 
-        var toggle_visiblity = function (event) {
+        toggle_visibility = function (event) {
             if (bz_material.opacity === 0.0) {
                 bz_material.opacity = 0.3;
                 bz_material.needsUpdate = true;
@@ -594,7 +594,19 @@ var BZVisualizer = function (showAxes, showBVectors, showPathpoints, useSVGRende
             render();
         }
 
-        canvas3d.addEventListener('dblclick', toggle_visiblity);
+        this.set_visibility = function (faceColor) {
+            if (faceColor) {
+                bz_material.opacity = 0.3;
+                bz_material.needsUpdate = true;
+            } else {
+                bz_material.opacity = 0.0;
+                bz_material.needsUpdate = true;
+            };
+
+            render();
+        }
+
+        canvas3d.addEventListener('dblclick', toggle_visibility);
 
         this.update_kpts = function (kpoints_abs) {
             var kpt = scene.getObjectByName('kpts');
