@@ -528,15 +528,44 @@ var BZVisualizer = function (showAxes, showBVectors, showPathpoints, useSVGRende
                 new THREE.Vector3(p2[0], p2[1], p2[2]));
             var line = new THREE.Line(geometry, line_material);
             line.material.linewidth = 4;
+            line.name = "pathvectors";
             scene.add(line);
         });
+
+        // update the path vectors
+        this.update_pathVector = function (pathVector) {
+            var vectors = scene.getObjectByName('pathvectors');
+            while (vectors) {
+                vectors = scene.getObjectByName('pathvectors');
+                scene.remove(vectors);
+            };
+
+            pathVector.forEach(function (linespec) {
+                label1 = linespec[0];
+                label2 = linespec[1];
+                p1 = special_points[label1];
+                p2 = special_points[label2];
+
+                var geometry = new THREE.Geometry();
+                geometry.vertices.push(
+                    new THREE.Vector3(p1[0], p1[1], p1[2]));
+                geometry.vertices.push(
+                    new THREE.Vector3(p2[0], p2[1], p2[2]));
+                var line = new THREE.Line(geometry, line_material);
+                line.material.linewidth = 4;
+                line.name = "pathvectors";
+                scene.add(line);
+            });
+
+            render();
+        };
 
 
         if (showPathpoints) {
             kpoints_abs = jsondata['explicit_kpoints_abs'];
             for (var idx in kpoints_abs) {
                 pos = kpoints_abs[idx];
-                radius = 0.01 * max_b_length;
+                radius = 0.008 * max_b_length;
 
                 var sphere_geometry = new THREE.SphereGeometry(
                     radius, 16, 16);
@@ -617,7 +646,7 @@ var BZVisualizer = function (showAxes, showBVectors, showPathpoints, useSVGRende
 
             for (var idx in kpoints_abs) {
                 pos = kpoints_abs[idx];
-                radius = 0.01 * max_b_length;
+                radius = 0.008 * max_b_length;
 
                 var sphere_geometry = new THREE.SphereGeometry(
                     radius, 16, 16);

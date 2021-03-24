@@ -55,6 +55,7 @@ var BrillouinZoneView = widgets.DOMWidgetView.extend({
         // a custom callback.
         this.model.on('change:kpts', this.kpts_changed, this);
         this.model.on('change:face_color', this.faceColor_changed, this);
+        this.model.on('change:path_vectors', this.vectors_changed, this);
 
         this.el.innerHTML = '<div class="BZ-widget" id="' + this.canvasID + '"></div>'
             + '<div id="' + this.infoID + '"></div>';
@@ -64,7 +65,7 @@ var BrillouinZoneView = widgets.DOMWidgetView.extend({
 
         that = this;
         $(document).ready(function () {
-            that.BZVisualizer.loadBZ(canvasID=that.canvasID, infoID=that.infoID, jsondata=jsondata);
+            that.BZVisualizer.loadBZ(canvasID = that.canvasID, infoID = that.infoID, jsondata = jsondata);
             that.BZVisualizer.set_visibility(faceColor);
         });
     },
@@ -73,7 +74,6 @@ var BrillouinZoneView = widgets.DOMWidgetView.extend({
         const faceColor = this.model.get('face_color');
         this.model.set('face_color', !faceColor);
         this.touch();
-        console.log("Dou test 001 ******");
     },
 
     kpts_changed: function () {
@@ -81,7 +81,12 @@ var BrillouinZoneView = widgets.DOMWidgetView.extend({
         this.BZVisualizer.update_kpts(kpts);
     },
 
-    faceColor_changed: function() {
+    vectors_changed: function () {
+        const vectors = this.model.get('path_vectors');
+        this.BZVisualizer.update_pathVector(vectors);
+    },
+
+    faceColor_changed: function () {
         this.BZVisualizer.set_visibility(this.model.get('face_color'));
     }
 });
