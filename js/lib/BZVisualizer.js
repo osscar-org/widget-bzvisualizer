@@ -739,8 +739,8 @@ var BZVisualizer = function (showAxes, showBVectors, showPathpoints, useSVGRende
 
         }
         else {
-            var widthHalf = 0.5 * renderer.context.canvas.width / devicePixelRatio;
-            var heightHalf = 0.5 * renderer.context.canvas.height / devicePixelRatio;
+            var widthHalf = 0.5 * renderer.getContext().canvas.width / devicePixelRatio;
+            var heightHalf = 0.5 * renderer.getContext().canvas.height / devicePixelRatio;
             vector2D.x = (vector2D.x * widthHalf) + widthHalf;
             vector2D.y = - (vector2D.y * heightHalf) + heightHalf;
         }

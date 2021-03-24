@@ -1,5 +1,5 @@
 import ipywidgets as widgets
-from traitlets import Unicode, Dict, List, Bool
+from traitlets import Unicode, Dict, List, Bool, Int, observe
 import seekpath
 from seekpath.brillouinzone.brillouinzone import get_BZ
 import numpy as np
@@ -48,6 +48,9 @@ class BZVisualizer(widgets.DOMWidget):
 
     # The path vectors
     path_vectors = List().tag(sync=True)
+
+    # Singal to update the structure
+    update_structure = Int().tag(sync=True)
 
     def __init__(self, cell, positions, numbers, face_color=True):
         if type(cell) == np.ndarray:
@@ -108,3 +111,53 @@ class BZVisualizer(widgets.DOMWidget):
         self.jsondata = response
         self.kpts = self.jsondata['explicit_kpoints_abs']
         self.path_vectors = self.jsondata['path']
+        self.update_structure = 0
+
+    @observe('cell')
+    def _cell_change(self, change):
+        system = (np.array(change['new']), np.array(self.positions), np.array(self.numbers))
+        res = seekpath.getpaths.get_path(system, with_time_reversal=False)
+
+        real_lattice = res["primitive_lattice"]
+        rec_lattice = np.array(seekpath.hpkot.tools.get_reciprocal_cell_rows(real_lattice))
+        b1, b2, b3 = rec_lattice
+
+        faces_data = get_BZ(b1=b1, b2=b2, b3=b3)
+
+        response = {}
+        response["faces_data"] = faces_data
+        response["b1"] = b1.tolist()
+        response["b2"] = b2.tolist()
+        response["b3"] = b3.tolist()
+        ## Convert to absolute
+        response["kpoints"] = {
+            k: (v[0] * b1 + v[1] * b2 + v[2] * b3).tolist()
+            for k, v in res["point_coords"].items()
+        }
+        response["kpoints_rel"] = {
+            k: [v[0], v[1], v[2]] for k, v in res["point_coords"].items()
+        }
+        response["path"] = res["path"]
+
+        # It should use the same logic, so give the same cell as above
+        res_explicit = seekpath.get_explicit_k_path(system, with_time_reversal=False)
+        for k in res_explicit:
+            if k == "segments" or k.startswith("explicit_"):
+                if isinstance(res_explicit[k], np.ndarray):
+                    response[k] = res_explicit[k].tolist()
+                else:
+                    response[k] = res_explicit[k]
+
+        if (
+            np.sum(
+                np.abs(
+                    np.array(res_explicit["reciprocal_primitive_lattice"])
+                    - np.array(res["reciprocal_primitive_lattice"])
+                )
+            )
+            > 1.0e-7
+        ):
+            raise AssertionError("Got different reciprocal cells...")
+
+        self.jsondata = response
+        self.update_structure += 1
