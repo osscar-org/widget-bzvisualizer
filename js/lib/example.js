@@ -45,6 +45,10 @@ var BrillouinZoneView = widgets.DOMWidgetView.extend({
         this.BZVisualizer = new BZVisualizer(true, true, true, false);
     },
 
+    events: {
+        'dblclick': 'toggle_faceColor',
+    },
+
     // Defines how the widget gets rendered into the DOM
     render: function () {
         // Observe changes in the value traitlet in Python, and define
@@ -63,6 +67,13 @@ var BrillouinZoneView = widgets.DOMWidgetView.extend({
             that.BZVisualizer.loadBZ(canvasID=that.canvasID, infoID=that.infoID, jsondata=jsondata);
             that.BZVisualizer.set_visibility(faceColor);
         });
+    },
+
+    toggle_faceColor: function () {
+        const faceColor = this.model.get('face_color');
+        this.model.set('face_color', !faceColor);
+        this.touch();
+        console.log("Dou test 001 ******");
     },
 
     kpts_changed: function () {

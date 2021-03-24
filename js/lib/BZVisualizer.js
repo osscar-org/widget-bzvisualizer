@@ -606,7 +606,7 @@ var BZVisualizer = function (showAxes, showBVectors, showPathpoints, useSVGRende
             render();
         }
 
-        canvas3d.addEventListener('dblclick', toggle_visibility);
+        // canvas3d.addEventListener('dblclick', toggle_visibility);
 
         this.update_kpts = function (kpoints_abs) {
             var kpt = scene.getObjectByName('kpts');
