@@ -1,5 +1,5 @@
 import ipywidgets as widgets
-from traitlets import Unicode, Dict, List
+from traitlets import Unicode, Dict, List, Bool
 import seekpath
 from seekpath.brillouinzone.brillouinzone import get_BZ
 import numpy as np
@@ -43,7 +43,13 @@ class BZVisualizer(widgets.DOMWidget):
     # The jsondata for the Brillouin zone
     jsondata = Dict().tag(sync=True)
 
-    def __init__(self, cell, positions, numbers):
+    # Show the BZ surface
+    face_color = Bool(True).tag(sync=True)
+
+    # The path vectors
+    path_vectors = List().tag(sync=True)
+
+    def __init__(self, cell, positions, numbers, face_color=True):
         if type(cell) == np.ndarray:
             cell = cell.tolist()
         
@@ -53,7 +59,7 @@ class BZVisualizer(widgets.DOMWidget):
         if type(numbers) == np.ndarray:
             numbers = numbers.tolist()
 
-        super().__init__(cell = cell, positions=positions, numbers=numbers)
+        super().__init__(cell = cell, positions=positions, numbers=numbers, face_color=face_color)
 
         system = (np.array(cell), np.array(positions), np.array(numbers))
         res = seekpath.getpaths.get_path(system, with_time_reversal=False)
@@ -101,3 +107,4 @@ class BZVisualizer(widgets.DOMWidget):
 
         self.jsondata = response
         self.kpts = self.jsondata['explicit_kpoints_abs']
+        self.path_vectors = self.jsondata['path']

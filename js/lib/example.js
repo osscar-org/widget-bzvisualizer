@@ -45,27 +45,49 @@ var BrillouinZoneView = widgets.DOMWidgetView.extend({
         this.BZVisualizer = new BZVisualizer(true, true, true, false);
     },
 
+    events: {
+        'dblclick': 'toggle_faceColor',
+    },
+
     // Defines how the widget gets rendered into the DOM
     render: function () {
         // Observe changes in the value traitlet in Python, and define
         // a custom callback.
         this.model.on('change:kpts', this.kpts_changed, this);
+        this.model.on('change:face_color', this.faceColor_changed, this);
+        this.model.on('change:path_vectors', this.vectors_changed, this);
 
         this.el.innerHTML = '<div class="BZ-widget" id="' + this.canvasID + '"></div>'
             + '<div id="' + this.infoID + '"></div>';
 
         var jsondata = this.model.get('jsondata');
+        var faceColor = this.model.get('face_color');
 
         that = this;
         $(document).ready(function () {
-            that.BZVisualizer.loadBZ(canvasID=that.canvasID, infoID=that.infoID, jsondata=jsondata);
+            that.BZVisualizer.loadBZ(canvasID = that.canvasID, infoID = that.infoID, jsondata = jsondata);
+            that.BZVisualizer.set_visibility(faceColor);
         });
     },
 
+    toggle_faceColor: function () {
+        const faceColor = this.model.get('face_color');
+        this.model.set('face_color', !faceColor);
+        this.touch();
+    },
+
     kpts_changed: function () {
-        console.log("This function has been triggled here***********");
         const kpts = this.model.get('kpts');
         this.BZVisualizer.update_kpts(kpts);
+    },
+
+    vectors_changed: function () {
+        const vectors = this.model.get('path_vectors');
+        this.BZVisualizer.update_pathVector(vectors);
+    },
+
+    faceColor_changed: function () {
+        this.BZVisualizer.set_visibility(this.model.get('face_color'));
     }
 });
 
