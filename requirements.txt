@@ -1,0 +1,2 @@
+voila==0.2.7 
+voila-osscar-template==0.2.8
