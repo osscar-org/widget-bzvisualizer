@@ -1,10 +1,6 @@
 {
   "name": "widget-bzvisualizer",
   "version": "0.1.0",
-  "engines": {
-    "node": "15.3.0",
-    "yarn": "1.22.10"
-  },
   "description": "A Jupyter widget to plot the 1st Brillouin zone.",
   "author": "Dou Du",
   "main": "lib/index.js",
@@ -41,6 +37,7 @@
     "rimraf": "^2.6.1"
   },
   "dependencies": {
+    "yarn": "1.22.10",
     "@jupyter-widgets/base": "^1.1 || ^2 || ^3 || ^4",
     "lodash": "^4.17.4"
   },
