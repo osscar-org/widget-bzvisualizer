@@ -1,3 +1,4 @@
+cliapp==1.0.9
 voila==0.2.7 
 voila-osscar-template==0.2.8
 .
