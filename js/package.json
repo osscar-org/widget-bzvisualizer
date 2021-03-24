@@ -37,7 +37,6 @@
     "rimraf": "^2.6.1"
   },
   "dependencies": {
-    "yarn": "1.22.10",
     "@jupyter-widgets/base": "^1.1 || ^2 || ^3 || ^4",
     "lodash": "^4.17.4"
   },
