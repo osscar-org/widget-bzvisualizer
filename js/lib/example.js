@@ -56,6 +56,7 @@ var BrillouinZoneView = widgets.DOMWidgetView.extend({
         this.model.on('change:kpts', this.kpts_changed, this);
         this.model.on('change:face_color', this.faceColor_changed, this);
         this.model.on('change:path_vectors', this.vectors_changed, this);
+        this.model.on('change:update_structure', this.reloadBZ, this);
 
         this.el.innerHTML = '<div class="BZ-widget" id="' + this.canvasID + '"></div>'
             + '<div id="' + this.infoID + '"></div>';
@@ -68,6 +69,14 @@ var BrillouinZoneView = widgets.DOMWidgetView.extend({
             that.BZVisualizer.loadBZ(canvasID = that.canvasID, infoID = that.infoID, jsondata = jsondata);
             that.BZVisualizer.set_visibility(faceColor);
         });
+    },
+
+    reloadBZ: function () {
+        var jsondata = this.model.get('jsondata');
+        var faceColor = this.model.get('face_color');
+
+        this.BZVisualizer.loadBZ(canvasID = this.canvasID, infoID = this.infoID, jsondata = jsondata);
+        this.BZVisualizer.set_visibility(faceColor);
     },
 
     toggle_faceColor: function () {
