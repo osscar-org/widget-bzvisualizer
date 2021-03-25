@@ -3,6 +3,8 @@ widget-bzvisualizer
 
 A Jupyter widget to plot the 1st Brillouin zone.
 
+<img src="./example/widget-bzvisualizer.gif" width="750" height="400">
+
 Installation
 ------------
 
