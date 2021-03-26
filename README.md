@@ -1,7 +1,10 @@
 widget-bzvisualizer
 ===============================
 
-A Jupyter widget to plot the 1st Brillouin zone.
+A Jupyter widget to plot the 1st Brillouin zone. It uses the Javascript package tools-seekpath
+developed by Materials Cloud.
+
+https://github.com/materialscloud-org/tools-seekpath
 
 <img src="./example/widget-bzvisualizer.gif" width="750" height="400">
 
