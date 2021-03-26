@@ -30,3 +30,10 @@ Then you need to rebuild the JS when you make a code change:
     $ yarn run build
 
 You then need to refresh the JupyterLab page when your javascript changes.
+
+## Acknowledgements
+
+We acknowledge support from the EPFL Open Science Fund via the [OSSCAR](http://www.osscar.org) project.
+
+<img src='http://www.osscar.org/wp-content/uploads/2019/03/OSSCAR-logo.png' width='230'>
+
