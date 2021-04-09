@@ -58,8 +58,12 @@ var BrillouinZoneView = widgets.DOMWidgetView.extend({
         this.model.on('change:path_vectors', this.vectors_changed, this);
         this.model.on('change:update_structure', this.reloadBZ, this);
 
-        this.el.innerHTML = '<div class="BZ-widget" id="' + this.canvasID + '"></div>'
-            + '<div id="' + this.infoID + '"></div>';
+        this.width = this.model.get('width');
+        this.height = this.model.get('height');
+
+        this.el.innerHTML = '<div class="BZ-widget" id="' + this.canvasID
+            + '" style="width:' + this.width + '; height:' + this.height +';"'
+            + '></div><div id="' + this.infoID + '"></div>';
 
         var jsondata = this.model.get('jsondata');
         var faceColor = this.model.get('face_color');
