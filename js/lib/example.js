@@ -1,7 +1,8 @@
 var widgets = require('@jupyter-widgets/base');
 var _ = require('lodash');
 var $ = require('jquery');
-var BZVisualizer = require('./BZVisualizer').BZVisualizer;
+var BZVisualizer = require('brillouinzone-visualizer').BZVisualizer;
+// var BZVisualizer = require('./BZVisualizer').BZVisualizer;
 
 require('../css/brillouin.css');
 
