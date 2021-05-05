@@ -52,11 +52,10 @@ class BZVisualizer(widgets.DOMWidget):
     # Singal to update the structure
     update_structure = Int().tag(sync=True)
 
-    # Set the width and height of the widget
-    width = Unicode('450px').tag(sync=True)
+    # Set the height of the widget
     height = Unicode('450px').tag(sync=True)
 
-    def __init__(self, cell, positions, numbers, face_color=True, width='450px', height='450px'):
+    def __init__(self, cell, positions, numbers, face_color=True, height='450px'):
         if type(cell) == np.ndarray:
             cell = cell.tolist()
         
@@ -66,7 +65,7 @@ class BZVisualizer(widgets.DOMWidget):
         if type(numbers) == np.ndarray:
             numbers = numbers.tolist()
 
-        super().__init__(cell = cell, positions=positions, numbers=numbers, face_color=face_color, width=width, height=height)
+        super().__init__(cell = cell, positions=positions, numbers=numbers, face_color=face_color, height=height)
 
         system = (np.array(cell), np.array(positions), np.array(numbers))
         res = seekpath.getpaths.get_path(system, with_time_reversal=False)

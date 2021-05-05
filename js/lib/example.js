@@ -47,7 +47,7 @@ var BrillouinZoneView = widgets.DOMWidgetView.extend({
     },
 
     events: {
-        'dblclick': 'toggle_faceColor',
+        'keypress #BZ-widget': 'toggle_faceColor',
     },
 
     // Defines how the widget gets rendered into the DOM
@@ -59,11 +59,10 @@ var BrillouinZoneView = widgets.DOMWidgetView.extend({
         this.model.on('change:path_vectors', this.vectors_changed, this);
         this.model.on('change:update_structure', this.reloadBZ, this);
 
-        this.width = this.model.get('width');
         this.height = this.model.get('height');
 
         this.el.innerHTML = '<div class="BZ-widget" id="' + this.canvasID
-            + '" style="width:' + this.width + '; height:' + this.height +';"'
+            + '" style="height:' + this.height + ';"'
             + '></div><div id="' + this.infoID + '"></div>';
 
         var jsondata = this.model.get('jsondata');
@@ -84,10 +83,14 @@ var BrillouinZoneView = widgets.DOMWidgetView.extend({
         this.BZVisualizer.set_visibility(faceColor);
     },
 
-    toggle_faceColor: function () {
-        const faceColor = this.model.get('face_color');
-        this.model.set('face_color', !faceColor);
-        this.touch();
+    toggle_faceColor: function (event) {
+        console.log("The key press is working.********:" + event.keyCode);
+
+        if (event.keyCode == 84) {
+            const faceColor = this.model.get('face_color');
+            this.model.set('face_color', !faceColor);
+            this.touch();
+        }
     },
 
     kpts_changed: function () {
