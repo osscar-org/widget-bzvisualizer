@@ -55,7 +55,10 @@ class BZVisualizer(widgets.DOMWidget):
     # Set the height of the widget
     height = Unicode('450px').tag(sync=True)
 
-    def __init__(self, cell, positions, numbers, face_color=True, height='450px'):
+    # Set the width of the widget
+    width = Unicode('100%').tag(sync=True)
+
+    def __init__(self, cell, positions, numbers, face_color=True, height='450px', width='100%'):
         if type(cell) == np.ndarray:
             cell = cell.tolist()
         
@@ -65,7 +68,7 @@ class BZVisualizer(widgets.DOMWidget):
         if type(numbers) == np.ndarray:
             numbers = numbers.tolist()
 
-        super().__init__(cell = cell, positions=positions, numbers=numbers, face_color=face_color, height=height)
+        super().__init__(cell = cell, positions=positions, numbers=numbers, face_color=face_color, height=height, width=width)
 
         system = (np.array(cell), np.array(positions), np.array(numbers))
         res = seekpath.getpaths.get_path(system, with_time_reversal=False)

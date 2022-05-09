@@ -60,9 +60,10 @@ var BrillouinZoneView = widgets.DOMWidgetView.extend({
         this.model.on('change:update_structure', this.reloadBZ, this);
 
         this.height = this.model.get('height');
+        this.width = this.model.get('width');
 
         this.el.innerHTML = '<div class="BZ-widget" id="' + this.canvasID
-            + '" style="height:' + this.height + ';"'
+            + '" style="height:' + this.height + '; width:' + this.width + ';"'
             + '></div><div id="' + this.infoID + '"></div>';
 
         var jsondata = this.model.get('jsondata');
