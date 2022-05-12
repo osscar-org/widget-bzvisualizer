@@ -46,6 +46,9 @@ class BZVisualizer(widgets.DOMWidget):
     # Show the BZ surface
     face_color = Bool(True).tag(sync=True)
 
+    # Enable the interaction
+    enable_interaction = Bool(False).tag(sync=True)
+
     # The path vectors
     path_vectors = List().tag(sync=True)
 
@@ -58,7 +61,7 @@ class BZVisualizer(widgets.DOMWidget):
     # Set the width of the widget
     width = Unicode('100%').tag(sync=True)
 
-    def __init__(self, cell, positions, numbers, face_color=True, height='450px', width='100%'):
+    def __init__(self, cell, positions, numbers, face_color=True, enable_interaction=False, height='450px', width='100%'):
         if type(cell) == np.ndarray:
             cell = cell.tolist()
         
@@ -68,7 +71,7 @@ class BZVisualizer(widgets.DOMWidget):
         if type(numbers) == np.ndarray:
             numbers = numbers.tolist()
 
-        super().__init__(cell = cell, positions=positions, numbers=numbers, face_color=face_color, height=height, width=width)
+        super().__init__(cell = cell, positions=positions, numbers=numbers, face_color=face_color, enable_interaction=enable_interaction, height=height, width=width)
 
         system = (np.array(cell), np.array(positions), np.array(numbers))
         res = seekpath.getpaths.get_path(system, with_time_reversal=False)
