@@ -43,7 +43,7 @@ var BrillouinZoneView = widgets.DOMWidgetView.extend({
     initialize: function () {
         this.canvasID = _.uniqueId("BZCanvas");
         this.infoID = _.uniqueId("info");
-        this.BZVisualizer = new BZVisualizer(true, true, true, false);
+        this.BZVisualizer = new BZVisualizer(true, true, true, false,false);
     },
 
     events: {
@@ -73,12 +73,14 @@ var BrillouinZoneView = widgets.DOMWidgetView.extend({
 
         that = this;
         $(document).ready(function () {
-            that.BZVisualizer.loadBZ(canvasID = that.canvasID, infoID = that.infoID, jsondata = jsondata, enableInteraction = that.enableInteraction);
+            //that.BZVisualizer.loadBZ(canvasID = that.canvasID, infoID = that.infoID, jsondata = jsondata, enableInteraction = that.enableInteraction);
+	    that.BZVisualizer.initBZ(canvasID = that.canvasID, infoID = that.infoID, jsondata = jsondata, enableInteraction = that.enableInteraction);
             that.BZVisualizer.set_visibility(faceColor);
         });
     },
 
     reloadBZ: function () {
+	console.log("reloadBZ");
         var jsondata = this.model.get('jsondata');
         var faceColor = this.model.get('face_color');
         var enableInteraction = this.model.get('enable_interaction');
