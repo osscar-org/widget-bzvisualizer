@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "dev": "npm run build -- --sourcemap=inline --watch",
+    "build": "esbuild js/widget.js --minify --format=esm --bundle --outdir=src/widget_bzvisualizer/static"
+  },
+  "devDependencies": {
+    "esbuild": "^0.20.0"
+  },
+  "dependencies": {
+    "brillouinzone-visualizer": "^0.3.1"
+  }
+}
