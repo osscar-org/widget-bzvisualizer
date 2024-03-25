@@ -1,5 +1,7 @@
 # Jupyter widget: Brillouin zone visualizer
 
+[![PyPI - Version](https://img.shields.io/pypi/v/widget-bzvisualizer?color=4CC61E)](https://pypi.org/project/widget-bzvisualizer/)
+
 A Jupyter widget to plot the 1st Brillouin zone of crystals. It is based on the corresponding Javascript library: https://github.com/materialscloud-org/brillouinzone-visualizer
 
 The primary input is a crystal structure, which is parsed by [seekpath](https://github.com/giovannipizzi/seekpath) and the result is displayed by the Javascript widget using [anywidget](https://anywidget.dev/).
