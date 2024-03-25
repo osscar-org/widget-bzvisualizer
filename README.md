@@ -1,42 +1,34 @@
-widget-bzvisualizer: Jupyter Widget to Plot the 1st Brillouin Zone
-===================================================================
+# Jupyter widget: Brillouin zone visualizer
 
-A Jupyter widget to plot the 1st Brillouin zone. It uses the Javascript package 
-[tools-seekpath](https://github.com/materialscloud-org/tools-seekpath)
-developed by Materials Cloud. You can check this widget at
-[Heroku App](https://osscar-widget-bzvisualizer.herokuapp.com).
+A Jupyter widget to plot the 1st Brillouin zone of crystals. It is based on the corresponding Javascript library: https://github.com/materialscloud-org/brillouinzone-visualizer
 
-<img src="./example/widget-bzvisualizer.gif" width="750" height="400">
+The primary input is a crystal structure, which is parsed by [seekpath](https://github.com/giovannipizzi/seekpath) and the result is displayed by the Javascript widget using [anywidget](https://anywidget.dev/).
 
-Installation
-------------
+This repo is bootstrapped with `npm create anywidget@latest`.
 
-To install use pip:
+## Installation
 
-    $ pip install widget_bzvisualizer
+```sh
+pip install widget_bzvisualizer
+```
 
-For a development installation (requires [Node.js](https://nodejs.org) and [Yarn version 1](https://classic.yarnpkg.com/)),
+## Development
 
-    $ git clone https://github.com/osscar-org/widget-bzvisualizer.git
-    $ cd widget-bzvisualizer
-    $ pip install -e .
-    $ jupyter nbextension install --py --symlink --overwrite --sys-prefix widget_bzvisualizer
-    $ jupyter nbextension enable --py --sys-prefix widget_bzvisualizer
+Install the python code:
 
-When actively developing your extension for JupyterLab, run the command:
+```sh
+pip install -e .[dev]
+```
 
-    $ jupyter labextension develop --overwrite widget_bzvisualizer
+You then need to install the JavaScript dependencies and run the development server.
 
-Then you need to rebuild the JS when you make a code change:
+```sh
+npm install
+npm run dev
+```
 
-    $ cd js
-    $ yarn run build
-
-You then need to refresh the JupyterLab page when your javascript changes.
+Open `example/example.ipynb` in JupyterLab, VS Code, or your favorite editor to start developing. Changes made in `js/` will be reflected in the notebook.
 
 ## Acknowledgements
 
-We acknowledge support from the EPFL Open Science Fund via the [OSSCAR](http://www.osscar.org) project.
-
-<img src='http://www.osscar.org/wp-content/uploads/2019/03/OSSCAR-logo.png' width='230'>
-
+We acknowledge support from the EPFL Open Science Fund via the [OSSCAR project](http://www.osscar.org/).

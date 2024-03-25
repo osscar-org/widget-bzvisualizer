@@ -1,13 +1,11 @@
-*.egg-info/
-.ipynb_checkpoints/
-dist/
-build/
-*.py[cod]
-node_modules/
-
-# Compiled javascript
-widget_bzvisualizer/nbextension/
-widget_bzvisualizer/labextension/
-
-# OS X
+node_modules
+.venv
+dist
 .DS_Store
+
+# Python
+__pycache__
+.ipynb_checkpoints
+
+src/widget_bzvisualizer/static
+.vscode
