@@ -8,11 +8,13 @@ The primary input is a crystal structure, which is parsed by [seekpath](https://
 
 This repo is bootstrapped with `npm create anywidget@latest`.
 
-## Installation
+## Installation & usage
 
 ```sh
 pip install widget-bzvisualizer
 ```
+
+For usage examples, see `example/example.ipynb`.
 
 ## Development
 

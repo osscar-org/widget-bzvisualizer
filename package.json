@@ -7,6 +7,6 @@
     "esbuild": "^0.20.0"
   },
   "dependencies": {
-    "brillouinzone-visualizer": "^0.3.1"
+    "brillouinzone-visualizer": "^0.3.2"
   }
 }
