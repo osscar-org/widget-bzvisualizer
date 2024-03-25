@@ -11,7 +11,7 @@ This repo is bootstrapped with `npm create anywidget@latest`.
 ## Installation
 
 ```sh
-pip install widget_bzvisualizer
+pip install widget-bzvisualizer
 ```
 
 ## Development

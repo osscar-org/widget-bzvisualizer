@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "widget_bzvisualizer"
+name = "widget-bzvisualizer"
 version = "0.2.0"
 dependencies = ["anywidget"]
 readme = "README.md"
