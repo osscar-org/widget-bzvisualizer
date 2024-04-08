@@ -3,8 +3,12 @@ import seekpath
 from seekpath.brillouinzone.brillouinzone import get_BZ
 
 
-def get_seekpath_data_for_visualizer(cell, relcoords, atomic_numbers):
-    system = (np.array(cell), np.array(relcoords), np.array(atomic_numbers))
+def get_seekpath_data_for_visualizer(system):
+    system = (
+        np.array(system["cell"]),
+        np.array(system["rel_coords"]),
+        np.array(system["atom_numbers"]),
+    )
     res = seekpath.get_explicit_k_path(system, with_time_reversal=False)
 
     b1, b2, b3 = res["reciprocal_primitive_lattice"]
