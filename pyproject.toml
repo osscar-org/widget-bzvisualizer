@@ -12,14 +12,18 @@ dependencies = [
   "seekpath~=2.1",
 ]
 readme = "README.md"
+keywords = [
+  'jupyter',
+  'jupyterlab',
+  'widget',
+  'anywidget',
+  'osscar',
+  'brillouin-zone',
+  'reciprocal-space',
+]
 
 [project.optional-dependencies]
-dev = [
-  "watchfiles",
-  "jupyterlab",
-  "ase",
-  "bumpver==2023.1129",
-]
+dev = ["watchfiles", "jupyterlab", "ase", "bumpver==2023.1129"]
 
 # automatically add the dev feature to the default env (e.g., hatch shell)
 [tool.hatch.envs.default]
