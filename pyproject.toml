@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "widget-bzvisualizer"
 description = 'A Jupyter widget to show the Brillouin zone of periodic crystals.'
-version = "0.2.6"
+version = "0.2.7"
 dependencies = [
   "anywidget~=0.9.10",
   "numpy~=1.21",
@@ -63,7 +63,7 @@ npm = "npm"
 build_cmd = "build"
 
 [tool.bumpver]
-current_version = "v0.2.6"
+current_version = "v0.2.7"
 version_pattern = "vMAJOR.MINOR.PATCH[PYTAGNUM]"
 commit_message = "Bump version {old_version} -> {new_version}"
 commit = true
