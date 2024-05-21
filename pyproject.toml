@@ -4,6 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "widget-bzvisualizer"
+description = 'A Jupyter widget to show the Brillouin zone of periodic crystals.'
 version = "0.2.5"
 dependencies = [
   "anywidget~=0.9.10",
@@ -11,6 +12,7 @@ dependencies = [
   "scipy~=1.10",
   "seekpath~=2.1",
 ]
+authors = [{ name = "The OSSCAR team" }]
 readme = "README.md"
 keywords = [
   'jupyter',
@@ -21,9 +23,23 @@ keywords = [
   'brillouin-zone',
   'reciprocal-space',
 ]
+classifiers = [
+  'Development Status :: 5 - Production/Stable',
+  'Programming Language :: Python',
+  'Programming Language :: Python :: 3.9',
+  'Programming Language :: Python :: 3.10',
+  'Programming Language :: Python :: 3.11',
+  'Topic :: Scientific/Engineering',
+]
+license = { file = 'LICENSE.txt' }
+requires-python = '>=3.9'
+
+[project.urls]
+Home = 'https://www.osscar.org/'
+Source = 'https://github.com/osscar-org/widget-bzvisualizer'
 
 [project.optional-dependencies]
-dev = ["watchfiles", "jupyterlab", "ase", "bumpver==2023.1129"]
+dev = ["watchfiles", "jupyterlab", "notebook", "ase", "bumpver>=2023.1129"]
 
 # automatically add the dev feature to the default env (e.g., hatch shell)
 [tool.hatch.envs.default]
