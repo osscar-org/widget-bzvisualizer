@@ -1,6 +1,6 @@
 from PIL import Image, ImageChops, ImageStat
 
-image1 = Image.open('widget-sample.png')
+image1 = Image.open('widget-01.png')
 image2 = Image.open('test/widget-sample.png')
 
 diff = ImageChops.difference(image1, image2)
