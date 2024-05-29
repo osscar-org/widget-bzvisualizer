@@ -50,3 +50,6 @@ This will
 ## Acknowledgements
 
 We acknowledge support from the EPFL Open Science Fund via the [OSSCAR project](http://www.osscar.org/).
+
+<img src='https://www.osscar.org/_images/logos.png' width='1200'>
+
