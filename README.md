@@ -1,4 +1,4 @@
-# Jupyter widget: Brillouin zone visualizer
+# `widget-bzvisualizer`: A Jupyter Widget as Brillouin Zone Visualizer
 
 [![PyPI - Version](https://img.shields.io/pypi/v/widget-bzvisualizer?color=4CC61E)](https://pypi.org/project/widget-bzvisualizer/)
 [![widget test](https://github.com/osscar-org/widget-bzvisualizer/actions/workflows/widget-test.yml/badge.svg)](https://github.com/osscar-org/widget-bzvisualizer/actions/workflows/widget-test.yml)
