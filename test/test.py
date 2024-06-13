@@ -23,6 +23,17 @@ class test_widget():
   def teardown_method(self, method):
     self.driver.quit()
 
+  def test_elements(self):
+    self.driver.get("http://localhost:8383/voila/render/example.ipynb")
+    self.driver.set_window_size(1280, 1080)
+    time.sleep(3)
+
+    try:
+      self.driver.find_element(By.CLASS_NAME, 'bz-canvas3d')
+      print("Brillouin zone visualizer is fund!")
+    except:
+      raise Exception("The visualizer is NOT found!!!")
+
   def download_widget_image(self):
     self.driver.get("http://localhost:8383/voila/render/example.ipynb")
     self.driver.set_window_size(1280, 720)
@@ -35,5 +46,6 @@ class test_widget():
 test = test_widget()
 test.setup_method('Chrome')
 test.download_widget_image()
+test.test_elements()
 test.teardown_method('Chrome')
 
