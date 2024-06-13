@@ -1,7 +1,8 @@
 # Jupyter widget: Brillouin zone visualizer
 
 [![PyPI - Version](https://img.shields.io/pypi/v/widget-bzvisualizer?color=4CC61E)](https://pypi.org/project/widget-bzvisualizer/)
-[![Voila test](https://github.com/osscar-org/widget-bzvisualizer/actions/workflows/voila-test.yml/badge.svg)](https://github.com/osscar-org/widget-bzvisualizer/actions/workflows/voila-test.yml)
+[![widget test](https://github.com/osscar-org/widget-bzvisualizer/actions/workflows/widget-test.yml/badge.svg)](https://github.com/osscar-org/widget-bzvisualizer/actions/workflows/widget-test.yml)
+[![screenshot comparison](https://github.com/osscar-org/widget-bzvisualizer/actions/workflows/screenshot-comparison.yml/badge.svg)](https://github.com/osscar-org/widget-bzvisualizer/actions/workflows/screenshot-comparison.yml)
 
 A Jupyter widget to plot the 1st Brillouin zone of crystals. It is based on the corresponding Javascript library: https://github.com/materialscloud-org/brillouinzone-visualizer
 
