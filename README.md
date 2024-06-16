@@ -10,6 +10,8 @@ The primary input is a crystal structure, which is parsed by [seekpath](https://
 
 This repo is bootstrapped with `npm create anywidget@latest`.
 
+<img src="./example/demo.gif" width='1200'>
+
 ## Installation & usage
 
 ```sh
