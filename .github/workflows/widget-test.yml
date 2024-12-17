@@ -25,19 +25,15 @@ jobs:
         python-version: '3.12'
         architecture: 'x64'
     - name: Install dependencies
-      run: 
+      run: |
         pip install --upgrade pip
         pip install --upgrade jupyterlab
         pip install --upgrade voila
         pip install --upgrade voila-osscar-template
         pip install --upgrade ase
-        pip install --upgrade anywidget
-        pip install --upgrade numpy
-        pip install --upgrade scipy
-        pip install --upgrade seekpath
-
+    - name: Install the widget 
+      run: 
         pip install -e .
-
     - name: Run the voila server
       run: |
         voila --template=osscar --enable_nbextensions=True example/ --port 8383 --no-browser &
