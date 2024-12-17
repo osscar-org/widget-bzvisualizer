@@ -18,21 +18,22 @@ jobs:
     - name: Install node
       uses: actions/setup-node@v4
       with:
-       node-version: '21.x'
+       node-version: '22.x'
     - name: Install Python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.11'
+        python-version: '3.12'
         architecture: 'x64'
     - name: Install dependencies
-      run: 
+      run: | 
         pip install --upgrade pip
         pip install --upgrade jupyterlab
         pip install --upgrade voila
         pip install --upgrade voila-osscar-template
         pip install --upgrade ase
+    - name: Install widget
+      run: 
         pip install -e .
-
     - name: Run the voila server
       run: |
         voila --template=osscar --enable_nbextensions=True example/ --port 8383 --no-browser &
