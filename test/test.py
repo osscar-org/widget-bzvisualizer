@@ -17,7 +17,7 @@ class test_widget():
     options = Options()
     cwd = os.getcwd()
     options.add_argument("--headless")
-    options.add_argument("--window-size=1280x1500")
+    options.add_argument("--window-size=2000x3000")
     options.add_experimental_option("prefs", {"download.default_directory": cwd})
     self.driver = webdriver.Chrome(options=options)
     self.vars = {}
