@@ -39,6 +39,7 @@ jobs:
         pip install --upgrade pytest
         pip install --upgrade selenium
         pip install --upgrade Pillow
+        pip install --upgrade imagededup
 
     - uses: nanasess/setup-chromedriver@master
     - run: |
