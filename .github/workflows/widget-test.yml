@@ -31,6 +31,11 @@ jobs:
         pip install --upgrade voila
         pip install --upgrade voila-osscar-template
         pip install --upgrade ase
+        pip install --upgrade anywidget
+        pip install --upgrade numpy
+        pip install --upgrade scipy
+        pip install --upgrade seekpath
+
         pip install -e .
 
     - name: Run the voila server
